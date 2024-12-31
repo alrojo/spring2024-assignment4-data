@@ -84,6 +84,7 @@ def train(
 
     # Wrap model in DDP, if we're using it.
     is_ddp = int(os.environ.get("RANK", -1)) != -1
+    is_ddp=False
     if is_ddp:
         init_process_group(backend="nccl")
         ddp_rank = int(os.environ["RANK"])
@@ -124,6 +125,7 @@ def train(
             json.dump(model.config, f, indent=4)
 
     device_type = "cuda" if "cuda" in device else "cpu"
+    device_type = "cpu"
     torch_dtype = {
         "float32": torch.float32,
         "bfloat16": torch.bfloat16,

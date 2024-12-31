@@ -1,4 +1,7 @@
 CC-MAIN-2023-50/
+out/*
+out_model/*
+dumps/*
 *.bin
 
 nav
